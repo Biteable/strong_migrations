@@ -83,7 +83,7 @@ module StrongMigrations
 the entire table and indexes to be rewritten. Instead:
 
 1. Add the column without a default value
-2. Commit the transaction
+2. Commit the transaction (and start a new one)
 3. Backfill the column
 4. Add the default value"
         when :add_column_json

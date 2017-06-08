@@ -39,7 +39,7 @@ Also checks for best practices:
 ### Adding a column with a default value
 
 1. Add the column without a default value
-2. Commit the transaction
+2. Commit the transaction (and start a new one)
 3. Backfill the column
 4. Add the default value
 
@@ -51,6 +51,7 @@ class AddSomeColumnToUsers < ActiveRecord::Migration
 
     # 2
     commit_db_transaction
+    begin_db_transaction
 
     # 3.a (Rails 5+)
     User.in_batches.update_all some_column: "default_value"
